@@ -36,7 +36,7 @@ public class BookService {
 
     public void checkOutByName(String name) {
         Book book = findBookByName(name);
-        if (book == null || UNAVAILABLE.equals(book.getStatus())) {
+        if (book == null || UNAVAILABLE.equals(book.getStatus()) || CHECK_OUT.equals(book.getStatus())) {
             ConsoleService.printNotAvailableMessage();
             return;
         }
