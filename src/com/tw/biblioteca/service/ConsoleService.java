@@ -13,4 +13,8 @@ public class ConsoleService {
     public static void printNotAvailableMessage() {
         System.out.println("===========That book is not available.=========");
     }
+
+    public static void printSuccessReturn(){
+        System.out.println("===========Thank you for returning the book.===========");
+    }
 }

@@ -51,6 +51,7 @@ public class BookService {
         Book book = findBookByName(name);
         if (Status.CHECK_OUT.equals(book.getStatus())) {
             book.setStatus(AVAILABLE);
+            ConsoleService.printSuccessReturn();
         }
     }
 }

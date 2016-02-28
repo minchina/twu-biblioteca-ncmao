@@ -9,6 +9,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static com.tw.biblioteca.enumeration.Status.CHECK_OUT;
 import static org.junit.Assert.assertEquals;
 
 public class ConsoleServiceTest {
@@ -56,4 +57,15 @@ public class ConsoleServiceTest {
         assertEquals("===========Thank you! Enjoy the book===========\n", outContent.toString());
     }
 
+    @Test
+    public void shouldDisplayIfBookIsReturn(){
+
+        BookService bookService = new BookService();
+        bookService.findBookByName("Head First Java").setStatus(CHECK_OUT);
+
+        bookService.returnBook("Head First Java");
+
+        assertEquals("===========Thank you for returning the book.===========\n", outContent.toString());
+
+    }
 }

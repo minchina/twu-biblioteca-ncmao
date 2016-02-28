@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static com.tw.biblioteca.enumeration.Status.CHECK_OUT;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -38,13 +39,9 @@ public class BookServiceTest {
     @Test
     public void shouldDisplayIfBookIsReturn(){
 
-        List<Book> allBooks = bookService.getAllBooks();
-        assertThat(allBooks.size(), is(3));
+        bookService.findBookByName("Head First Java").setStatus(CHECK_OUT);
 
-        bookService.checkOutByName("Head First Java");
-        List<Book> allBooksExcludeCheckOut = bookService.getAllBooksExcludeCheckOut();
-
-        assertThat(allBooksExcludeCheckOut.size(), is(2));
+        assertThat(bookService.getAllBooksExcludeCheckOut().size(), is(2));
 
         bookService.returnBook("Head First Java");
 
