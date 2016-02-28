@@ -1,11 +1,16 @@
 package com.tw.biblioteca.domain;
 
+import com.tw.biblioteca.enumeration.Status;
+
+import static com.tw.biblioteca.enumeration.Status.ON_LIBRARY;
+
 public class Book {
 
     private Long id;
     private String name;
     private String author;
     private String publishedYear;
+    private Status status = ON_LIBRARY;
 
     public Book() {
     }
@@ -46,5 +51,13 @@ public class Book {
 
     public void setPublishedYear(String publishedYear) {
         this.publishedYear = publishedYear;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
