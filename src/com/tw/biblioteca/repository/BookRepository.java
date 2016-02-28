@@ -7,7 +7,8 @@ import java.util.List;
 
 public class BookRepository {
 
-    public static List<Book> ALL_BOOKS = Arrays.asList(new Book(), new Book());
+    public static List<Book> ALL_BOOKS = Arrays.asList(
+            new Book("Head First Java", "Sierra", "2007"), new Book());
 
     public List<Book> getAllBooks() {
         return ALL_BOOKS;

@@ -1,7 +1,6 @@
-package com.tw.biblioteca;
+package com.tw.biblioteca.repository;
 
 import com.tw.biblioteca.domain.Book;
-import com.tw.biblioteca.repository.BookRepository;
 import org.junit.Before;
 import org.junit.Test;
 
