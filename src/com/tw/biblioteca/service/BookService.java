@@ -1,6 +1,7 @@
 package com.tw.biblioteca.service;
 
 import com.tw.biblioteca.domain.Book;
+import com.tw.biblioteca.enumeration.Status;
 import com.tw.biblioteca.repository.BookRepository;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class BookService {
         List<Book> allBooks = bookRepository.getAllBooks();
         List<Book> books = new ArrayList<>();
         for (Book book : allBooks) {
-            if (AVAILABLE.equals(book.getStatus())) {
+            if (!CHECK_OUT.equals(book.getStatus())) {
                 books.add(book);
             }
         }
@@ -44,5 +45,12 @@ public class BookService {
             ConsoleService.printNotAvailableMessage();
         }
 
+    }
+
+    public void returnBook(String name) {
+        Book book = findBookByName(name);
+        if (Status.CHECK_OUT.equals(book.getStatus())) {
+            book.setStatus(AVAILABLE);
+        }
     }
 }
