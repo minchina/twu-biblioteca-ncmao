@@ -2,8 +2,9 @@ package com.tw.biblioteca.enumeration;
 
 public enum Option {
 
-    LIST_BOOKS("List Books", "success"),
-    INVALID("", "Select a valid option!");
+    LIST_BOOKS("List Books", "list success"),
+    INVALID("", "choose a valid option!"),
+    QUIT("Quit", "you have quit!");
 
     private String command;
     private String description;
