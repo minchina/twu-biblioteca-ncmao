@@ -20,6 +20,6 @@ public class BookRepositoryTest {
     @Test
     public void shouldGetAllBooks() {
         List<Book> books = bookRepository.getAllBooks();
-        assertThat(books.size(), is(2));
+        assertThat(books.size(), is(3));
     }
 }

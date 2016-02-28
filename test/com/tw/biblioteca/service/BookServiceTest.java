@@ -20,18 +20,18 @@ public class BookServiceTest {
     @Test
     public void shouldGetAllBook(){
         List<Book> allBooks = bookService.getAllBooks();
-        assertThat(allBooks.size(), is(2));
+        assertThat(allBooks.size(), is(3));
     }
 
     @Test
     public void shouldNotDisplayIfBookIsCheckout(){
 
         List<Book> allBooks = bookService.getAllBooks();
-        assertThat(allBooks.size(), is(2));
+        assertThat(allBooks.size(), is(3));
 
         bookService.checkOutByName("Head First Java");
         List<Book> allBooksExcludeCheckOut = bookService.getAllBooksExcludeCheckOut();
 
-        assertThat(allBooksExcludeCheckOut.size(), is(1));
+        assertThat(allBooksExcludeCheckOut.size(), is(2));
     }
 }

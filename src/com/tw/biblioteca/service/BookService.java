@@ -6,8 +6,9 @@ import com.tw.biblioteca.repository.BookRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.tw.biblioteca.enumeration.Status.AVAILABLE;
 import static com.tw.biblioteca.enumeration.Status.CHECK_OUT;
-import static com.tw.biblioteca.enumeration.Status.ON_LIBRARY;
+import static com.tw.biblioteca.enumeration.Status.UNAVAILABLE;
 
 public class BookService {
     private BookRepository bookRepository = new BookRepository();
@@ -20,7 +21,7 @@ public class BookService {
         List<Book> allBooks = bookRepository.getAllBooks();
         List<Book> books = new ArrayList<>();
         for (Book book : allBooks) {
-            if (ON_LIBRARY.equals(book.getStatus())) {
+            if (AVAILABLE.equals(book.getStatus())) {
                 books.add(book);
             }
         }
@@ -34,7 +35,14 @@ public class BookService {
 
     public void checkOutByName(String name) {
         Book book = findBookByName(name);
-        book.setStatus(CHECK_OUT);
-        ConsoleService.printCheckOutSuccess();
+        if (AVAILABLE.equals(book.getStatus())) {
+            book.setStatus(CHECK_OUT);
+            ConsoleService.printCheckOutSuccess();
+        }
+
+        if (UNAVAILABLE.equals(book.getStatus())) {
+            ConsoleService.printNotAvailableMessage();
+        }
+
     }
 }

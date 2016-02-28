@@ -2,7 +2,7 @@ package com.tw.biblioteca.domain;
 
 import com.tw.biblioteca.enumeration.Status;
 
-import static com.tw.biblioteca.enumeration.Status.ON_LIBRARY;
+import static com.tw.biblioteca.enumeration.Status.AVAILABLE;
 
 public class Book {
 
@@ -10,7 +10,7 @@ public class Book {
     private String name;
     private String author;
     private String publishedYear;
-    private Status status = ON_LIBRARY;
+    private Status status = AVAILABLE;
 
     public Book() {
     }
