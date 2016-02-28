@@ -29,12 +29,7 @@ public class BookService {
     }
 
     public Book findBookByName(String name) {
-        for (Book book : getAllBooks()) {
-            if(book.getName().equals(name)) {
-                return book;
-            }
-        }
-        return null;
+        return bookRepository.findBookByName(name);
     }
 
     public void checkOutByName(String name) {

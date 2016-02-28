@@ -13,4 +13,14 @@ public class BookRepository {
     public List<Book> getAllBooks() {
         return ALL_BOOKS;
     }
+
+    public Book findBookByName(String name) {
+        for (Book book : getAllBooks()) {
+            if(book.getName().equals(name)) {
+                return book;
+            }
+        }
+        return null;
+
+    }
 }
