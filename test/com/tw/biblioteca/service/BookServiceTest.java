@@ -48,4 +48,17 @@ public class BookServiceTest {
         assertThat(bookService.getAllBooksExcludeCheckOut().size(), is(3));
 
     }
+
+    @Test
+    public void shouldNotReturnIfBookIsExist(){
+
+        bookService.findBookByName("Head First Java").setStatus(CHECK_OUT);
+
+        assertThat(bookService.getAllBooksExcludeCheckOut().size(), is(2));
+
+        bookService.returnBook("Head First java");
+
+        assertThat(bookService.getAllBooksExcludeCheckOut().size(), is(2));
+
+    }
 }

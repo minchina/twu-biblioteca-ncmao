@@ -17,4 +17,8 @@ public class ConsoleService {
     public static void printSuccessReturn(){
         System.out.println("===========Thank you for returning the book.===========");
     }
+
+    public static void printUnsuccessfulReturn(){
+        System.out.println("===========That is not a valid book to return.===========");
+    }
 }

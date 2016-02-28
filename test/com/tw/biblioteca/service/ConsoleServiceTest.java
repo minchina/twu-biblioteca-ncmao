@@ -68,4 +68,15 @@ public class ConsoleServiceTest {
         assertEquals("===========Thank you for returning the book.===========\n", outContent.toString());
 
     }
+    @Test
+    public void shouldTipsValidBookToReturn(){
+
+        BookService bookService = new BookService();
+        bookService.findBookByName("Head First Java").setStatus(CHECK_OUT);
+
+        bookService.returnBook("Head First java");
+
+        assertEquals("===========That is not a valid book to return.===========\n", outContent.toString());
+
+    }
 }

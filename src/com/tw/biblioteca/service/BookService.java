@@ -36,19 +36,25 @@ public class BookService {
 
     public void checkOutByName(String name) {
         Book book = findBookByName(name);
+        if (book == null || UNAVAILABLE.equals(book.getStatus())) {
+            ConsoleService.printNotAvailableMessage();
+            return;
+        }
+
         if (AVAILABLE.equals(book.getStatus())) {
             book.setStatus(CHECK_OUT);
             ConsoleService.printCheckOutSuccess();
         }
 
-        if (UNAVAILABLE.equals(book.getStatus())) {
-            ConsoleService.printNotAvailableMessage();
-        }
 
     }
 
     public void returnBook(String name) {
         Book book = findBookByName(name);
+        if (book == null) {
+            ConsoleService.printUnsuccessfulReturn();
+            return;
+        }
         if (Status.CHECK_OUT.equals(book.getStatus())) {
             book.setStatus(AVAILABLE);
             ConsoleService.printSuccessReturn();
