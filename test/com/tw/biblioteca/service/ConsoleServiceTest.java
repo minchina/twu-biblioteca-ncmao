@@ -31,4 +31,13 @@ public class ConsoleServiceTest {
         ConsoleService.printWelcome();
         assertEquals("===============Welcome to Biblioteca!===============\n", outContent.toString());
     }
+
+    @Test
+    public void shouldPrintCheckOutSuccess(){
+        BookService bookService = new BookService();
+
+        bookService.checkOutByName("Head First Java");
+
+        assertEquals("===========Thank you! Enjoy the book===========\n", outContent.toString());
+    }
 }
