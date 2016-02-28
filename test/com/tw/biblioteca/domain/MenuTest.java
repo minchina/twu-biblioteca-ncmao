@@ -17,4 +17,14 @@ public class MenuTest {
         assertThat(menu.getOption().getCommand(), is("List Books"));
         assertThat(menu.getOption(), is(Option.LIST_BOOKS));
     }
+
+    @Test
+    public void shouldTipsErrorIfOptionIsValid(){
+        Menu menu = new Menu();
+        menu.setOption(Option.INVALID);
+        
+        assertThat(menu.getOption().getCommand(), is(""));
+        assertThat(menu.getOption(), is(Option.INVALID));
+        assertThat(menu.getOption().getDescription(), is("Select a valid option!"));
+    }
 }
