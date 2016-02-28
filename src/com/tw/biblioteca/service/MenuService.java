@@ -13,6 +13,10 @@ public class MenuService {
     private static Menu MENU = new Menu(LIST_BOOKS, Arrays.asList(LIST_BOOKS, QUIT, INVALID));
 
     public String choose(Option option) {
+        if (INVALID.equals(option)) {
+            return INVALID.getDescription();
+        }
+
         if (isApplyNewOption(option)) {
             getMenu().setCurrentOption(option);
         }
