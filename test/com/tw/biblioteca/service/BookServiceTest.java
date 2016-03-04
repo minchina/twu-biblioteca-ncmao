@@ -39,7 +39,8 @@ public class BookServiceTest {
     @Test
     public void shouldDisplayIfBookIsReturn(){
 
-        bookService.findBookByName("Head First Java").setStatus(CHECK_OUT);
+        Book book = bookService.findBookByName("Head First Java");
+        bookService.checkOutByName(book.getName());
 
         assertThat(bookService.getAllBooksExcludeCheckOut().size(), is(2));
 

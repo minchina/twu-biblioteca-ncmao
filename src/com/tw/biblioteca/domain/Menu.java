@@ -26,16 +26,4 @@ public class Menu {
     public void setCurrentOption(Option currentOption) {
         this.currentOption = currentOption;
     }
-
-    public List<Option> getOptions() {
-        return options;
-    }
-
-    public void setOptions(List<Option> options) {
-        this.options = options;
-    }
-
-    public void addOption(Option option) {
-        this.options.add(option);
-    }
 }
