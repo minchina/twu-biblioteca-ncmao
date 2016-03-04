@@ -1,6 +1,7 @@
 package com.tw.biblioteca.service;
 
 import com.tw.biblioteca.domain.Book;
+import com.tw.biblioteca.domain.Item;
 import com.tw.biblioteca.enumeration.Status;
 import com.tw.biblioteca.repository.BookRepository;
 
@@ -51,13 +52,26 @@ public class BookService {
 
     public void returnBook(String name) {
         Book book = findBookByName(name);
-        if (book == null) {
+        updateItem(book, new Executor() {
+            @Override
+            public void exec(Item item) {
+                if (Status.CHECK_OUT.equals(item.getStatus())) {
+                    item.setStatus(AVAILABLE);
+                    ConsoleService.printSuccessReturn();
+                }
+            }
+        });
+    }
+
+    private void updateItem(Item item, Executor executor ) {
+        if (item == null) {
             ConsoleService.printUnsuccessfulReturn();
-            return;
+        } else {
+            executor.exec(item);
         }
-        if (Status.CHECK_OUT.equals(book.getStatus())) {
-            book.setStatus(AVAILABLE);
-            ConsoleService.printSuccessReturn();
-        }
+    }
+
+    interface Executor {
+        void exec(Item item);
     }
 }
